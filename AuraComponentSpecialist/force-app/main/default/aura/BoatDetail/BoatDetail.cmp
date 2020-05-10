@@ -1,0 +1,46 @@
+<aura:component>
+    <aura:attribute name="boat" type="Boat__c" />
+
+    <lightning:card iconName="utility:anchor" title="{!v.boat.Contact__r.Name + '\'s Boat'}">
+        <aura:set attribute="actions">
+            <lightning:button label="Full Details" onclick="{!c.onFullDetails}"/>
+        </aura:set>
+        <p class="slds-p-horizontal_small">
+            <lightning:layout horizontalAlign="space" multipleRows="true">
+                <lightning:layoutItem size="6">
+                    <div class="slds-p-horizontal--small">
+                        <div class="boatproperty">
+                            <span class="label">Boat Name:</span>
+                            <span>{!v.boat.Name}</span>
+                        </div>
+                        <div class="boatproperty">
+                            <span class="label">Type:</span>
+                            <span>{!v.boat.BoatType__r.Name}</span>
+                        </div>
+                        <div class="boatproperty">
+                            <span class="label">Length:</span>
+                            <span><lightning:formattedNumber value="{!v.boat.Length__c}"/> ft</span>
+                        </div>
+                        <div class="boatproperty">
+                            <span class="label">Est. Price:</span>
+                            <span><lightning:formattedNumber value="{!v.boat.Price__c}" format-style="currency" currency-code="USD"/></span>
+                        </div>
+                        <div class="boatproperty">
+                            <span class="label">Description:</span>
+                            <span>{!v.boat.Description__c}</span>
+                        </div>
+                    </div>
+                    
+                </lightning:layoutItem>
+    
+                <lightning:layoutItem size="6">
+                    <div class="imageview" style="{! join('', 
+                                                    'background-image: url(', 
+                                                    v.boat.Picture__c,
+                                                    ')'
+                    )}"/>
+                </lightning:layoutItem>
+            </lightning:layout>    
+        </p>
+    </lightning:card>
+</aura:component>	
