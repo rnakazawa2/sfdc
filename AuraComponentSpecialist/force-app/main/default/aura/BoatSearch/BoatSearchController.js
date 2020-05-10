@@ -5,7 +5,6 @@
 
         var searchCmp = component.find("search");
         // call the aura:method in the child component
-        var auraMethodResult =
-        searchCmp.doSearch(boatTypeId);
+        var auraMethodResult = searchCmp.doSearch(boatTypeId);
     }
 })

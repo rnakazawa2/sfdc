@@ -1,12 +1,13 @@
 <aura:component>
     <aura:attribute name="boat" type="Boat__c" />
     <aura:attribute name="selected" type="Boolean" default="false" />
+    <aura:registerEvent name="boatId" type="c:BoatSelect" />
 
     <lightning:button class="{! join(' ',
                                     'tile',
                                     v.selected ? 'selected' : ''
                                 )}" 
-                                onclick="{!c.onBoatClick}" >
+                                onclick="{!c.onBoatClick}" value="{!v.boat.Id}" >
         <div style="{! join('', 
                         'background-image: url(', 
                         v.boat.Picture__c,

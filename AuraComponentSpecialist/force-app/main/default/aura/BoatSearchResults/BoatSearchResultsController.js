@@ -5,29 +5,12 @@
             return;
         }
         component.set("v.boatTypeId", params.boatTypeId);
-        helper.onSearch(component);
+        helper.onSearch(component);        
+    },
 
-
-        // // Create the action
-        // var action = component.get("c.getBoats");
-        // if (params) {
-        //     action.setParams({
-        //         boatTypeId : params.boatTypeId
-        //     });
-        // }
-
-        // // Add callback behavior for when response is received
-        // action.setCallback(this, function(response) {
-        //     var state = response.getState();
-        //     if (state === "SUCCESS") {
-        //         component.set("v.items", response.getReturnValue());
-        //     }
-        //     else {
-        //         console.log("Failed with state: " + state);
-        //     }
-        // });
-        // // Send action off to be executed
-        // $A.enqueueAction(action);
-        
+    onBoatSelect : function(component, event, helper) {
+        // get event param
+        var boatId = event.getParam("boatId");
+        component.set("v.selectedBoatId", boatId);
     }
 })
