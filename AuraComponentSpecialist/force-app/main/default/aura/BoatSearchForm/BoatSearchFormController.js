@@ -40,5 +40,18 @@
             });    
         }
         createBoatEvent.fire();
+    },
+
+    onFormSubmit : function(component, event, helper) {
+        var formData = $A.get("e.c:FormSubmit");
+
+        // get input value
+        var inputField = component.find("searchform");
+        var boatType = inputField.get("v.value");
+        
+        formData.setParams({
+            "formData" : boatType
+        });
+        formData.fire();
     }
 })

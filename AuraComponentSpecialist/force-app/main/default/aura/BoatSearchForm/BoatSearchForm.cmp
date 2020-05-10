@@ -2,6 +2,7 @@
     <aura:attribute name="items" type="List" />
     <aura:attribute name="newDisplay" type="Boolean" default="false" />
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:registerEvent name="formData" type="c:FormSubmit" />
 
     <lightning:layout horizontalAlign="center" multipleRows="true">
         <!--<form >-->
@@ -17,7 +18,7 @@
             </lightning:layoutItem>
             <lightning:layoutItem padding="around-small">
                 <div>
-                    <lightning:button variant="brand" label="Search" />
+                    <lightning:button variant="brand" label="Search" onclick="{!c.onFormSubmit}" />
                     <aura:if isTrue="{!v.newDisplay}">
                         <lightning:button variant="brand-outline" label="New" onclick="{!c.createRecord}" />
                     </aura:if>

@@ -1,3 +1,15 @@
-<aura:component>
+<aura:component controller="BoatSearchResults">
+    <aura:method name="doSearch" description="">
+        <aura:attribute name="boatTypeId" type="String" default="" />
+    </aura:method>
+    <aura:attribute name="items" type="List" />
+    <aura:attribute name="boatTypeId" type="String" />
 
+    <lightning:layout horizontalAlign="space" multipleRows="true">
+        <aura:iteration items="{!v.items}" var="item">
+            <lightning:layoutItem size="3" padding="around-small">
+                <c:BoatTile boat="{!item}"/>
+            </lightning:layoutItem>
+        </aura:iteration>    
+    </lightning:layout>
 </aura:component>
