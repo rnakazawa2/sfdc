@@ -1,23 +1,27 @@
 <aura:component implements="flexipage:availableForAllPageTypes, force:hasRecordId">
     <aura:attribute name="boat" type="Boat__c" />
     <aura:attribute name="id" type="Id" />
+    <aura:attribute name="selectedtabid" type="String" default="detailstab" />
     <aura:handler event="c:BoatSelected" action="{!c.onBoatSelected}" />
+    <aura:handler event="c:BoatReviewAdded" action="{!c.onBoatReviewAdded}" />
 
     <force:recordData aura:id="service"
         layoutType="FULL"
         recordId="{!v.id}"
         targetFields ="{!v.boat}"
-        mode="VIEW"/>
+        mode="VIEW"
+        recordUpdated="{!c.onRecordUpdated}"
+        />
 
-    <lightning:tabset selectedTabId="details">
-        <lightning:tab label="Details" id="details">
+    <lightning:tabset selectedTabId="{!v.selectedtabid}">
+        <lightning:tab label="Details" id="detailstab">
             <c:BoatDetail boat="{!v.boat}" />
         </lightning:tab>
-        <lightning:tab label="Reviews" id="reviews">
-            Two Content !
+        <lightning:tab label="Reviews" id="boatreviewtab">
+            <c:BoatReviews aura:id="reviews" boat="{!v.boat}" />
         </lightning:tab>
-        <lightning:tab label="Add Review" id="addreview">
-            Three Content !
+        <lightning:tab label="Add Review" id="addreviewtab">
+            <c:AddBoatReview boat="{!v.boat}" />
         </lightning:tab>
     </lightning:tabset>
 </aura:component>	

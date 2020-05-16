@@ -1,0 +1,40 @@
+<aura:component controller="BoatReviews">
+    <aura:attribute name="boat" type="Boat__c" />
+    <aura:attribute name="boatReviews" type="List" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:method name="refresh" description="">
+        <aura:attribute name="boat" type="Boat__c" />
+    </aura:method>
+
+    <div class="slds-feed slds-scrollable_y" style="height:250px;">
+        <ul class="slds-feed__list">
+            <aura:iteration items="{!v.boatReviews}" var="item">
+                <li class="slds-feed__item">
+                    <article class="slds-post">
+                        <header class="slds-post__header slds-media">
+                            <div class="slds-media__figure">
+                                <img alt="{!item.CreatedBy.Name}" src="{!item.CreatedBy.SmallPhotoUrl}" title="{!item.CreatedBy.Name}" />
+                            </div>
+                            <div class="slds-media__body">
+                                <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
+                                    <p>
+                                      <a href="javascript:void(0);" title="{!item.CreatedBy.Name}" onclick="{!c.onUserInfoClick}" data-userid="{!item.CreatedBy.Id}">{!item.CreatedBy.Name}</a> — {!item.CreatedBy.CompanyName}
+                                    </p>
+                                </div>
+                                <p class="slds-text-body_small"><lightning:formattedDateTime value="{!item.CreatedDate}" /></p>
+                            </div>
+                        </header>
+                        <div class="slds-post__content slds-text-longform">
+                            <h3 class="slds-text-heading_small">{!item.Name}</h3>
+                            <p>{!item.Comment__c}</p>
+                            <c:FiveStarRating value="{!item.Rating__c}" readonly="true" />
+                        </div>
+                    </article>
+                </li>
+            </aura:iteration>
+        </ul>
+    </div>
+    <aura:if isTrue="{!empty(v.boatReviews)}">
+        <p class="slds-p-horizontal_small slds-align--absolute-center">No reviews available</p>
+    </aura:if>
+</aura:component>	

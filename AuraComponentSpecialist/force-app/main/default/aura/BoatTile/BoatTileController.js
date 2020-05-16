@@ -15,5 +15,16 @@
             "boatSelected" : boatCmp
         });
         boatSelected.fire();
+
+        // plot map event
+        var plotmap = $A.get("e.c:PlotMapMarker");
+        plotmap.setParams({
+            "sObjectId" : boatCmp.Id,
+            "lat" : boatCmp.Geolocation__Latitude__s,
+            "long" : boatCmp.Geolocation__Longitude__s,
+            "label" : boatCmp.Name
+        });
+        plotmap.fire();
+
     }
 })
