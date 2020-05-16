@@ -4,20 +4,23 @@
         var boatCmp = component.get("v.boat");
         console.log(JSON.stringify(boatCmp));
 
-        var boatId = $A.get("e.c:BoatSelect");
-        boatId.setParams({
+//        var boatId = $A.get("e.c:BoatSelect");
+        var boatSelect = component.getEvent("boatSelect");
+        boatSelect.setParams({
             "boatId" : boatCmp.Id
         });
-        boatId.fire();
+        boatSelect.fire();
 
         var boatSelected =  $A.get("e.c:BoatSelected");
+//        var boatSelected = component.getEvent("boatSelected");
         boatSelected.setParams({
-            "boatSelected" : boatCmp
+            "boat" : boatCmp
         });
         boatSelected.fire();
 
         // plot map event
         var plotmap = $A.get("e.c:PlotMapMarker");
+//        var plotmap = component.getEvent("plotmap");
         plotmap.setParams({
             "sObjectId" : boatCmp.Id,
             "lat" : boatCmp.Geolocation__Latitude__s,

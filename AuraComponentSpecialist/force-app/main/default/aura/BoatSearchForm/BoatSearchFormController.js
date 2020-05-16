@@ -43,15 +43,15 @@
     },
 
     onFormSubmit : function(component, event, helper) {
-        var formData = $A.get("e.c:FormSubmit");
-
+        var formSubmitEvt = component.getEvent("formsubmit");
         // get input value
         var inputField = component.find("searchform");
         var boatType = inputField.get("v.value");
+        var formData = {"boatTypeId" : boatType};
         
-        formData.setParams({
-            "formData" : boatType
+        formSubmitEvt.setParams({
+            "formData" : formData
         });
-        formData.fire();
+        formSubmitEvt.fire();
     }
 })

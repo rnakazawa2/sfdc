@@ -1,3 +1,3 @@
 <aura:application extends="force:slds">
-    <c:BoatSearch />
+    <lightning:layout><c:BoatSearch /></lightning:layout>
 </aura:application>	

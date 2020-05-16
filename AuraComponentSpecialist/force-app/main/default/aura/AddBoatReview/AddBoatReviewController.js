@@ -38,7 +38,8 @@
         helper.onInit(component);
 
         // event fire
-        var boatReviewAdded =  $A.get("e.c:BoatReviewAdded");
+//        var boatReviewAdded =  $A.get("e.c:BoatReviewAdded");
+        var boatReviewAdded =  component.getEvent("boatReviewAdded");//$A.get("e.c:BoatReviewAdded");
         boatReviewAdded.fire();
         
     }

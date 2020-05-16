@@ -26,7 +26,7 @@
                         </header>
                         <div class="slds-post__content slds-text-longform">
                             <h3 class="slds-text-heading_small">{!item.Name}</h3>
-                            <p>{!item.Comment__c}</p>
+                            <p><lightning:formattedRichText value="{!item.Comment__c}"/></p>
                             <c:FiveStarRating value="{!item.Rating__c}" readonly="true" />
                         </div>
                     </article>
