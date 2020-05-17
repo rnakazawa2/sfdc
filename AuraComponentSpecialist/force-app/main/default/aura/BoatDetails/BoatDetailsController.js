@@ -18,7 +18,7 @@
         // refresh reviews
         var reviewsCmp = component.find("reviews");
         if (reviewsCmp) {
-            var auraMethodResult = reviewsCmp.refresh(component.get("v.boat"));
+            var auraMethodResult = reviewsCmp.refresh();
         }
     }
 })

@@ -38,9 +38,10 @@
         helper.onInit(component);
 
         // event fire
-//        var boatReviewAdded =  $A.get("e.c:BoatReviewAdded");
-        var boatReviewAdded =  component.getEvent("boatReviewAdded");//$A.get("e.c:BoatReviewAdded");
+        var boatReviewAdded =  component.getEvent("boatReviewAdded");
         boatReviewAdded.fire();
-        
+    },
+
+    onRecordUpdated : function(component, event, helper) {
     }
 })

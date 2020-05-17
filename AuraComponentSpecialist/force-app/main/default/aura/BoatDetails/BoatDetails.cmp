@@ -20,8 +20,7 @@
                 BoatType__r.Name,
                 Picture__c"
         recordId="{!v.id}"
-        targetRecord="{!v.boat}"
-        targetFields="{!v.simpleRecord}"
+        targetFields="{!v.boat}"
         targetError="{!v.recordError}"
         recordUpdated="{!c.onRecordUpdated}"
         />
@@ -29,7 +28,7 @@
     <aura:if isTrue="{!not(empty(v.boat))}" >
     <lightning:tabset selectedTabId="{!v.selectedtabid}">
         <lightning:tab label="Details" id="detailstab">
-            <c:BoatDetail boat="{!v.simpleRecord}" />
+            <c:BoatDetail boat="{!v.boat}" />
         </lightning:tab>
         <lightning:tab label="Reviews" id="boatreviewtab">
             <c:BoatReviews aura:id="reviews" boat="{!v.boat}" />
